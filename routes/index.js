@@ -17,4 +17,8 @@ router.get('/add-tender', function(req, res, next) {
   res.render('add-tender');
 });
 
+router.post('/add-tender/execute', function (req, res, next){
+  res.render('add-tender');
+});
+
 module.exports = router;
