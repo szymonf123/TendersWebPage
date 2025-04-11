@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    html(lang="pl")
+        head
+            meta(charset="UTF-8")
+        body
+            header
+                h1 Przetargi.pl
+            nav
+                ul(id="navi")
+                    a(href="/")
+                        li Strona główna
+                    a(href="/actual-tenders")
+                        li Lista trwających przetargów
+                    a(href="/cancelled-tenders")
+                        li Lista zakończonych przetargów
+                    a(href="/add-tender")
+                        li Dodaj przetarg
+            article
+                h2 Dodaj przetarg
+            footer Przetargi.pl 2025
