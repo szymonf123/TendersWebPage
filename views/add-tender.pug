@@ -19,4 +19,38 @@ block content
                         li Dodaj przetarg
             article
                 h2 Dodaj przetarg
+                form(method="POST", class="insert", action="")
+                    div(class="category")
+                        div(class="description") Nazwa przedmiotu przetargu:
+                        div(class="field")
+                            input(type="text", name="name")
+                    div(class="category")
+                        div(class="description") Instytucja zamawiająca:
+                        div(class="field")
+                            input(type="text", name="insitution")
+                    div(class="category")
+                        div(class="description") Opis przedmiotu przetargu:
+                        div(class="field")
+                            textarea(name="descr")
+                    div(class="category")
+                        div(class="description") Data rozpoczęcia przyjmowania ofert:
+                        div(class="field")
+                            input(type="date", name="start-date")
+                    div(class="category")
+                        div(class="description") Godzina rozpoczęcia przyjmowania ofert:
+                        div(class="field")
+                            input(type="time", name="start-time")
+                    div(class="category")
+                        div(class="description") Data zakończenia przyjmowania ofert:
+                        div(class="field")
+                            input(type="date", name="end-date")
+                    div(class="category")
+                        div(class="description") Godzina zakończenia przyjmowania ofert:
+                        div(class="field")
+                            input(type="time", name="end-time")
+                    div(class="category")
+                        div(class="description") Maksymalny koszt realizacji zamówienia:
+                        div(class="field")
+                            input(type="number", name="price")
+                    input(type="submit")
             footer Przetargi.pl 2025
