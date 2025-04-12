@@ -1,11 +1,24 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+const mysql = require("mysql2");
 
-router.get('/', function(req, res, next) {
-  res.render('index');
+const db = mysql.createConnection({
+  host : "localhost",
+  user : "root",
+  password : "",
+  database : "tendersdatabase"
 });
 
-router.get('/actual-tenders', function(req, res, next) {
+db.connect(function (err){
+  if (err)
+    throw err;
+});
+
+router.get("/", function(req, res, next) {
+  res.render("index");
+});
+
+router.get("/actual-tenders", function(req, res, next) {
   var data = [
     {Name: "Przetarg 1",
     StartDate: "xxxxxx",
@@ -13,10 +26,10 @@ router.get('/actual-tenders', function(req, res, next) {
     StartTime: "zzzzz",
     EndTime: "wwwwww"}
   ]
-  res.render('actual-tenders', {tenders : data});
+  res.render("actual-tenders", {tenders : data});
 });
 
-router.get('/cancelled-tenders', function(req, res, next) {
+router.get("/cancelled-tenders", function(req, res, next) {
   var data = [
     {Name: "Przetarg 1",
       StartDate: "xxxxxx",
@@ -29,15 +42,15 @@ router.get('/cancelled-tenders', function(req, res, next) {
       StartTime: "zzzzz",
       EndTime: "wwwwww"}
   ]
-  res.render('cancelled-tenders', {tenders : data});
+  res.render("cancelled-tenders", {tenders : data});
 });
 
-router.get('/add-tender', function(req, res, next) {
-  res.render('add-tender');
+router.get("/add-tender", function(req, res, next) {
+  res.render("add-tender");
 });
 
-router.post('/add-tender/execute', function (req, res, next){
-  res.render('add-tender');
+router.post("/add-tender/execute", function (req, res, next){
+  res.render("add-tender");
 });
 
 module.exports = router;
