@@ -9,6 +9,10 @@ a {
   color: #00B7FF;
 }
 
+footer {
+  padding-top: 20px;
+}
+
 #navi {
   background-color: #949e94;
   list-style: none;
@@ -78,4 +82,19 @@ input[type=submit] {
 input[type=submit]:hover {
   color: #949e94;
   background-color: black;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid white;
+  padding: 8px;
+  text-align: left;
+}
+
+tr:nth-child(odd) td {
+  background-color: #282828;
 }

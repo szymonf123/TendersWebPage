@@ -19,4 +19,23 @@ block content
                         li Dodaj przetarg
             article
                 h2 Lista trwających przetargów
+                table
+                    thead
+                        tr
+                            th Lp
+                            th Nazwa przedmiotu przetargu
+                            th Data rozpoczęcia
+                            th Godzina rozpoczęcia
+                            th Data zakończenia
+                            th Godzina zakończenia
+                        tbody
+                            each tender, index in tenders
+                                tr
+                                    td #{index + 1}
+                                    td=tender.Name
+                                    td=tender.StartDate
+                                    td=tender.StartTime
+                                    td=tender.EndDate
+                                    td=tender.EndTime
+
             footer Przetargi.pl 2025

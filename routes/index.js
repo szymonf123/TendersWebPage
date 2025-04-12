@@ -6,7 +6,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/actual-tenders', function(req, res, next) {
-  res.render('actual-tenders');
+  var data = [
+    {Name: "Przetarg 1",
+    StartDate: "xxxxxx",
+    EndDate: "yyyyyyy",
+    StartTime: "zzzzz",
+    EndTime: "wwwwww"}
+  ]
+  res.render('actual-tenders', {tenders : data});
 });
 
 router.get('/cancelled-tenders', function(req, res, next) {
