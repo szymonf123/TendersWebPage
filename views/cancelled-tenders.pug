@@ -19,4 +19,16 @@ block content
                         li Dodaj przetarg
             article
                 h2 Lista zakończonych przetargów
+                table
+                    thead
+                        tr
+                            th Lp
+                            th Nazwa przedmiotu przetargu
+                            th Status przetargu
+                        tbody
+                            each tender, index in tenders
+                                tr
+                                    td #{index + 1}
+                                    td=tender.Name
+                                    td Zakończono przyjmowanie ofert
             footer Przetargi.pl 2025

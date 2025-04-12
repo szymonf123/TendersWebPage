@@ -17,7 +17,19 @@ router.get('/actual-tenders', function(req, res, next) {
 });
 
 router.get('/cancelled-tenders', function(req, res, next) {
-  res.render('cancelled-tenders');
+  var data = [
+    {Name: "Przetarg 1",
+      StartDate: "xxxxxx",
+      EndDate: "yyyyyyy",
+      StartTime: "zzzzz",
+      EndTime: "wwwwww"},
+    {Name: "Przetarg 2",
+      StartDate: "xxxxxx",
+      EndDate: "yyyyyysssy",
+      StartTime: "zzzzz",
+      EndTime: "wwwwww"}
+  ]
+  res.render('cancelled-tenders', {tenders : data});
 });
 
 router.get('/add-tender', function(req, res, next) {
