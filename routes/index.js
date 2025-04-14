@@ -22,7 +22,6 @@ router.get("/", function(req, res, next) {
 router.get("/actual-tenders", async function(req, res, next) {
   try {
     const data = await TenderController.getTenders(db);
-    console.log(data); // tu dane już są
     res.render("actual-tenders", { tenders: data });
   } catch (err) {
     next(err);
@@ -30,20 +29,13 @@ router.get("/actual-tenders", async function(req, res, next) {
 });
 
 
-router.get("/cancelled-tenders", function(req, res, next) {
-  var data = [
-    {Name: "Przetarg 1",
-      StartDate: "xxxxxx",
-      EndDate: "yyyyyyy",
-      StartTime: "zzzzz",
-      EndTime: "wwwwww"},
-    {Name: "Przetarg 2",
-      StartDate: "xxxxxx",
-      EndDate: "yyyyyysssy",
-      StartTime: "zzzzz",
-      EndTime: "wwwwww"}
-  ]
-  res.render("cancelled-tenders", {tenders : data});
+router.get("/cancelled-tenders", async function(req, res, next) {
+  try {
+    const data = await TenderController.getCancelledTenders(db);
+    res.render("cancelled-tenders", { tenders: data });
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.get("/add-tender", function(req, res, next) {
