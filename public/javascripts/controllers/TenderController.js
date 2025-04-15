@@ -28,6 +28,24 @@ class TenderController {
             });
         });
     }
+
+    static addTender(db, tender){
+        /*if (Object.values(data).some(value => value === "")) {
+            res.render("notification", {
+                title: "Kinomaniak",
+                notification: "Błąd dodawania filmu. Wymagane pola nie zostały uzupełnione."
+            });
+            return;
+        }*/
+        let sql = `INSERT INTO tenders (subject_name, institution, description, start_date, start_time, end_date, end_time, max_price, submission_datetime) VALUES ("${tender.name}", "${tender.institution}", "${tender.desrc}", "${tender.startDate}", "${tender.startTime}", "${tender.endData}", "${tender.endTime}", ${tender.price}, NOW())`;
+        console.log(sql);
+        return new Promise((resolve, reject) => {
+            db.query(sql, (err, tender) => {
+                if (err) return reject(err);
+                resolve(tender);
+            });
+        });
+    }
 }
 
 module.exports = TenderController;

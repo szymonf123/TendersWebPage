@@ -10,3 +10,5 @@ class Tender {
         this.price = price;
     }
 }
+
+module.exports = Tender;

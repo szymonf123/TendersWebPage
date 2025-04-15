@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const mysql = require("mysql2");
+const Tender = require("../public/javascripts/models/Tender")
 const TenderController = require("../public/javascripts/controllers/TenderController")
 
 const db = mysql.createConnection({
@@ -62,6 +63,15 @@ router.get("/add-tender", function(req, res, next) {
 });
 
 router.post("/add-tender/execute", function (req, res, next){
+  const tender = new Tender(req.body.name,
+      req.body.institution,
+      req.body.descr,
+      req.body.startDate,
+      req.body.startTime,
+      req.body.endDate,
+      req.body.endTime,
+      req.body.price);
+  TenderController.addTender(db, tender);
   res.render("add-tender");
 });
 
