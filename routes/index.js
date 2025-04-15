@@ -47,6 +47,16 @@ router.get("/cancelled-tenders", async function(req, res, next) {
   }
 });
 
+router.get("/cancelled-tenders/details/:id", async function(req, res, next) {
+  try {
+    const id = req.params.id;
+    const data = await TenderController.getTenderById(db, id);
+    res.render("cancelled-tender-details", { tenders: data });
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/add-tender", function(req, res, next) {
   res.render("add-tender");
 });

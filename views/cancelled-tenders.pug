@@ -29,6 +29,7 @@ block content
                             each tender, index in tenders
                                 tr
                                     td #{index + 1}
-                                    td=tender.subject_name
+                                    td
+                                        a(href=`/cancelled-tenders/details/${tender.id}`)= tender.subject_name
                                     td Zakończono przyjmowanie ofert
             footer Przetargi.pl 2025

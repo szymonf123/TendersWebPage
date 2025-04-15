@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    html(lang="pl")
+        head
+            meta(charset="UTF-8")
+        body
+            header
+                h1 Przetargi.pl
+            nav
+                ul(id="navi")
+                    a(href="/")
+                        li Strona główna
+                    a(href="/actual-tenders")
+                        li Lista trwających przetargów
+                    a(href="/cancelled-tenders")
+                        li Lista zakończonych przetargów
+                    a(href="/add-tender")
+                        li Dodaj przetarg
+            article
+                h2 Szczegóły przetargu
+                each tender in tenders
+                    table
+                        tr
+                            td Nazwa przedmiotu przetargu
+                            td=tender.subject_name
+                        tr
+                            td Nazwa instytucji zamawiającej
+                            td=tender.institution
+                        tr
+                            td Opis przetargu
+                            td=tender.description
+                        tr
+                            td Data rozpoczęcia zbierania ofert
+                            td=tender.f_start_date
+                        tr
+                            td Godzina rozpoczęcia zbierania ofert
+                            td=tender.start_time
+                        tr
+                            td Data zakończenia zbierania ofert
+                            td=tender.f_end_date
+                        tr
+                            td Godzina zakończenia zbierania ofert
+                            td=tender.end_time
+                        tr
+                            td Maksymalna koszt realizacji przetargu
+                            td=tender.max_price + " zł"
+                h2 Złożone oferty
+            footer Przetargi.pl 2025
