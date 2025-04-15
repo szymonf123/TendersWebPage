@@ -28,6 +28,15 @@ router.get("/actual-tenders", async function(req, res, next) {
   }
 });
 
+router.get("/actual-tenders/details/:id", async function(req, res, next) {
+  try {
+    const id = req.params.id;
+    const data = await TenderController.getTenderById(db, id);
+    res.render("actual-tender-details", { tenders: data });
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.get("/cancelled-tenders", async function(req, res, next) {
   try {

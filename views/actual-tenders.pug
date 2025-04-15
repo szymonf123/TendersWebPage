@@ -32,7 +32,8 @@ block content
                             each tender, index in tenders
                                 tr
                                     td #{index + 1}
-                                    td=tender.subject_name
+                                    td
+                                        a(href=`/actual-tenders/details/${tender.id}`)= tender.subject_name
                                     td=tender.f_start_date
                                     td=tender.start_time
                                     td=tender.f_end_date
