@@ -72,14 +72,14 @@ input[name], select{
   color: white;
 }
 
-input[type=submit] {
-  font-size: 100%;
+input[type=submit], button {
   background-color: #949e94;
   font-family: "Calibri Light", serif;
-  margin-left: 30%;
+  font-size: 150%;
+  margin-top: 20px;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover, button:hover {
   color: #949e94;
   background-color: black;
 }

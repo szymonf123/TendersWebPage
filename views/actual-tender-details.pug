@@ -19,7 +19,7 @@ block content
                         li Dodaj przetarg
             article
                 h2 Szczegóły przetargu
-                each tender, index in tenders
+                each tender in tenders
                     table
                         tr
                             td Nazwa przedmiotu przetargu
@@ -45,4 +45,6 @@ block content
                         tr
                             td Maksymalna koszt realizacji przetargu
                             td=tender.max_price + " zł"
+                    a(href=`${tender.id}/send-offer`)
+                        button Złóż ofertę
             footer Przetargi.pl 2025
