@@ -3,6 +3,8 @@ var router = express.Router();
 const mysql = require("mysql2");
 const Tender = require("../public/javascripts/models/Tender")
 const TenderController = require("../public/javascripts/controllers/TenderController")
+const Offer = require("../public/javascripts/models/Offer")
+const OfferController = require("../public/javascripts/controllers/OfferController")
 
 const db = mysql.createConnection({
   host : "localhost",
@@ -37,6 +39,26 @@ router.get("/actual-tenders/details/:id", async function(req, res, next) {
   } catch (err) {
     next(err);
   }
+});
+
+router.get("/actual-tenders/details/:id/send-offer", async function(req, res, next) {
+  try {
+    const id = req.params.id;
+    const data = await TenderController.getTenderById(db, id);
+    res.render("send-offer", { tenders: data , tenderId : id});
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post("/actual-tenders/details/:id/send-offer/execute", async function(req, res, next) {
+  const tenderId = req.params.id;
+  const offer = new Offer(tenderId,
+      req.body.name,
+      req.body.price);
+  OfferController.addOffer(db, offer, tenderId);
+  const data = await TenderController.getTenderById(db, tenderId);
+  res.render("actual-tender-details", { tenders: data });
 });
 
 router.get("/cancelled-tenders", async function(req, res, next) {
