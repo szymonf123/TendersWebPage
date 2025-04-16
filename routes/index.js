@@ -79,7 +79,8 @@ router.get("/cancelled-tenders/details/:id", async function(req, res, next) {
   try {
     const id = req.params.id;
     const data = await TenderController.getTenderById(db, id);
-    res.render("cancelled-tender-details", { tenders: data });
+    const offers = await OfferController.getOffersByTenderId(db, id);
+    res.render("cancelled-tender-details", { tenders: data, offers : offers, number : offers.length });
   } catch (err) {
     next(err);
   }

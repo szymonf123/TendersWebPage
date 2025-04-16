@@ -46,4 +46,20 @@ block content
                             td Maksymalna koszt realizacji przetargu
                             td=tender.max_price + " zł"
                 h2 Złożone oferty
+                    p Liczba ofert: #{number}
+                if number < 1
+                    p Brak rozstrzygnięcia przetargu
+                else
+                    table
+                        thead
+                            tr
+                                th Lp
+                                th Nazwa oferenta
+                                th Wartość oferty
+                            tbody
+                                each offer, index in offers
+                                    tr
+                                        td #{index + 1}
+                                        td=offer.bidder_name
+                                        td=offer.value + " zł"
             footer Przetargi.pl 2025
