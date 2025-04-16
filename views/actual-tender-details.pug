@@ -48,4 +48,7 @@ block content
                     if tender.is_active
                         a(href=`${tender.id}/send-offer`)
                             button Złóż ofertę
+                    else
+                        p
+                            b Składanie ofert będzie możliwe od #{tender.f_start_date} od godziny #{tender.start_time}
             footer Przetargi.pl 2025
