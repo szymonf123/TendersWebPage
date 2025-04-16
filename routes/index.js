@@ -56,9 +56,14 @@ router.post("/actual-tenders/details/:id/send-offer/execute", async function(req
   const offer = new Offer(tenderId,
       req.body.name,
       req.body.price);
-  OfferController.addOffer(db, offer, tenderId);
-  const data = await TenderController.getTenderById(db, tenderId);
-  res.render("actual-tender-details", { tenders: data });
+  const insertingResult = OfferController.addOffer(db, offer, tenderId);
+  if (insertingResult === -1){
+    res.render("notification", { notification : "Błąd - puste pola formularza"})
+  }
+  else {
+    const data = await TenderController.getTenderById(db, tenderId);
+    res.render("actual-tender-details", { tenders: data });
+  }
 });
 
 router.get("/cancelled-tenders", async function(req, res, next) {
