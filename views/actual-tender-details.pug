@@ -45,6 +45,7 @@ block content
                         tr
                             td Maksymalna koszt realizacji przetargu
                             td=tender.max_price + " zł"
-                    a(href=`${tender.id}/send-offer`)
-                        button Złóż ofertę
+                    if tender.is_active
+                        a(href=`${tender.id}/send-offer`)
+                            button Złóż ofertę
             footer Przetargi.pl 2025
