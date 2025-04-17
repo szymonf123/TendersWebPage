@@ -62,7 +62,7 @@ router.post("/actual-tenders/details/:id/send-offer/execute", async function(req
   }
   else {
     const data = await TenderController.getTenderById(db, tenderId);
-    res.render("actual-tender-details", { tenders: data });
+    res.render("notification", { notification : "Pomyślnie złożono ofertę w przetargu" });
   }
 });
 
@@ -103,7 +103,7 @@ router.post("/add-tender/execute", function (req, res, next){
   if (insertingResult === -1)
     res.render("notification", { notification : "Błąd - puste pola formularza podczas dodawania przetargu!!!"});
   else
-    res.render("add-tender");
+    res.render("notification", { notification : "Pomyślnie dodano przetarg"});
 });
 
 module.exports = router;

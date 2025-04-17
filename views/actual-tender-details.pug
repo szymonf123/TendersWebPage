@@ -19,36 +19,35 @@ block content
                         li Dodaj przetarg
             article
                 h2 Szczegóły przetargu
-                each tender in tenders
-                    table
-                        tr
-                            td Nazwa przedmiotu przetargu
-                            td=tender.subject_name
-                        tr
-                            td Nazwa instytucji zamawiającej
-                            td=tender.institution
-                        tr
-                            td Opis przetargu
-                            td=tender.description
-                        tr
-                            td Data rozpoczęcia zbierania ofert
-                            td=tender.f_start_date
-                        tr
-                            td Godzina rozpoczęcia zbierania ofert
-                            td=tender.start_time
-                        tr
-                            td Data zakończenia zbierania ofert
-                            td=tender.f_end_date
-                        tr
-                            td Godzina zakończenia zbierania ofert
-                            td=tender.end_time
-                        tr
-                            td Maksymalna koszt realizacji przetargu
-                            td=tender.max_price + " zł"
-                    if tender.is_active
-                        a(href=`${tender.id}/send-offer`)
-                            button Złóż ofertę
-                    else
-                        p
-                            b Składanie ofert będzie możliwe od #{tender.f_start_date} od godziny #{tender.start_time}
+                table
+                    tr
+                        td Nazwa przedmiotu przetargu
+                        td=tenders[0].subject_name
+                    tr
+                        td Nazwa instytucji zamawiającej
+                        td=tenders[0].institution
+                    tr
+                        td Opis przetargu
+                        td=tenders[0].description
+                    tr
+                        td Data rozpoczęcia zbierania ofert
+                        td=tenders[0].f_start_date
+                    tr
+                        td Godzina rozpoczęcia zbierania ofert
+                        td=tenders[0].start_time
+                    tr
+                        td Data zakończenia zbierania ofert
+                        td=tenders[0].f_end_date
+                    tr
+                        td Godzina zakończenia zbierania ofert
+                        td=tenders[0].end_time
+                    tr
+                        td Maksymalna koszt realizacji przetargu
+                        td=tenders[0].max_price + " zł"
+                if tenders[0].is_active
+                    a(href=`${tenders[0].id}/send-offer`)
+                        button Złóż ofertę
+                else
+                    p
+                        b Składanie ofert będzie możliwe od #{tenders[0].f_start_date} od godziny #{tenders[0].start_time}
             footer Przetargi.pl 2025
