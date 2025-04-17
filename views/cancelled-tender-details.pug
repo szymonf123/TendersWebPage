@@ -55,11 +55,9 @@ block content
                             tr
                                 th Lp
                                 th Nazwa oferenta
-                                th Wartość oferty
                             tbody
                                 each offer, index in offers
                                     tr
                                         td #{index + 1}
                                         td=offer.bidder_name
-                                        td=offer.value + " zł"
             footer Przetargi.pl 2025
