@@ -33,6 +33,9 @@ class TenderController {
         if (Object.values(tender).some(value => value === "")) {
             return -1;
         }
+        else if (tender.price < 0){
+            return -2;
+        }
         let sql = `INSERT INTO tenders (subject_name, institution, description, start_date, start_time, end_date, end_time, max_price, submission_datetime) VALUES ("${tender.name}", "${tender.institution}", "${tender.desrc}", "${tender.startDate}", "${tender.startTime}", "${tender.endData}", "${tender.endTime}", ${tender.price}, NOW())`;
         console.log(sql);
         return new Promise((resolve, reject) => {

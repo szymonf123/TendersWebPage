@@ -1,6 +1,6 @@
 class OfferController {
     static getOffersByTenderId(db, tenderId){
-        const sql = `SELECT * FROM offers INNER JOIN tenders ON offers.tender_id = tenders.id WHERE tender_id = ${tenderId} AND value <= max_price ORDER BY value`;
+        const sql = `SELECT * FROM offers INNER JOIN tenders ON offers.tender_id = tenders.id WHERE tender_id = ${tenderId} AND value <= max_price ORDER BY value, tenders.submission_datetime`;
         return new Promise((resolve, reject) => {
             db.query(sql, (err, data) => {
                 if (err) return reject(err);

@@ -105,6 +105,8 @@ router.post("/add-tender/execute", function (req, res, next){
   const insertingResult = TenderController.addTender(db, tender);
   if (insertingResult === -1)
     res.render("notification", { notification : "Błąd - puste pola formularza podczas dodawania przetargu!!!"});
+  else if (insertingResult === -2)
+    res.render("notification", { notification : "Błąd - maksymalny koszt nie może być ujemny!!!"});
   else
     res.render("notification", { notification : "Pomyślnie dodano przetarg"});
 });
