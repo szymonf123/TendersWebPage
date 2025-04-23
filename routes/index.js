@@ -60,6 +60,9 @@ router.post("/actual-tenders/details/:id/send-offer/execute", async function(req
   if (insertingResult === -1){
     res.render("notification", { notification : "Błąd - puste pola formularza podczas składania oferty!!!"});
   }
+  else if (insertingResult === -2){
+    res.render("notification", { notification : "Błąd - kwota nie może być ujemna!!!"});
+  }
   else {
     const data = await TenderController.getTenderById(db, tenderId);
     res.render("notification", { notification : "Pomyślnie złożono ofertę w przetargu" });

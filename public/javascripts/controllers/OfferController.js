@@ -12,6 +12,9 @@ class OfferController {
         if (Object.values(offer).some(value => value === "")) {
             return -1;
         }
+        else if (offer.price < 0){
+            return -2;
+        }
 
         let sql = `INSERT INTO offers (tender_id, bidder_name, value, submission_datetime) VALUES (${offer.tenderId}, "${offer.bidderName}", ${offer.price}, NOW())`;
         console.log(sql);
