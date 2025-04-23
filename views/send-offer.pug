@@ -17,28 +17,32 @@ block content
                         li Lista zakończonych przetargów
                     a(href="/add-tender")
                         li Dodaj przetarg
-            article
-                h2 Złóż ofertę w przetargu
-                form(method="POST", class="insert", action=`/actual-tenders/details/${tenders[0].id}/send-offer/execute`)
-                    div(class="category")
-                        div(class="description") Nazwa przetargu:
-                        div(class="field")
-                            input(type="text", name="subname", value=tenders[0].subject_name, disabled)
-                    div(class="category")
-                        div(class="description") Instytucja zamawiająca:
-                        div(class="field")
-                            input(type="text", name="institution", value=tenders[0].institution, disabled)
-                    div(class="category")
-                        div(class="description") Maksymalny koszt realizacji zamówienia (zł):
-                        div(class="field")
-                            input(type="number", name="price", value=tenders[0].max_price, disabled)
-                    div(class="category")
-                        div(class="description") Nazwa oferenta:
-                        div(class="field")
-                            input(type="text", name="name")
-                    div(class="category")
-                        div(class="description") Wartość oferty (zł):
-                        div(class="field")
-                            input(type="number", name="price")
-                    input(type="submit")
+
+            if tenders[0].is_active
+                article
+                    h2 Złóż ofertę w przetargu
+                    form(method="POST", class="insert", action=`/actual-tenders/details/${tenders[0].id}/send-offer/execute`)
+                        div(class="category")
+                            div(class="description") Nazwa przetargu:
+                            div(class="field")
+                                input(type="text", name="subname", value=tenders[0].subject_name, disabled)
+                        div(class="category")
+                            div(class="description") Instytucja zamawiająca:
+                            div(class="field")
+                                input(type="text", name="institution", value=tenders[0].institution, disabled)
+                        div(class="category")
+                            div(class="description") Maksymalny koszt realizacji zamówienia (zł):
+                            div(class="field")
+                                input(type="number", name="price", value=tenders[0].max_price, disabled)
+                        div(class="category")
+                            div(class="description") Nazwa oferenta:
+                            div(class="field")
+                                input(type="text", name="name")
+                        div(class="category")
+                            div(class="description") Wartość oferty (zł):
+                            div(class="field")
+                                input(type="number", name="price")
+                        input(type="submit")
+            else
+                h1 Błąd - przetarg nieaktywny!!!
             footer Przetargi.pl 2025
