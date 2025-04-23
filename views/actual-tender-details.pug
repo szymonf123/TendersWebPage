@@ -22,7 +22,7 @@ block content
                 table
                     tr
                         td Nazwa przedmiotu przetargu
-                        td=tenders[0].subject_name
+                        td=tenders[0].subjectName
                     tr
                         td Nazwa instytucji zamawiającej
                         td=tenders[0].institution
@@ -31,23 +31,23 @@ block content
                         td=tenders[0].description
                     tr
                         td Data rozpoczęcia zbierania ofert
-                        td=tenders[0].f_start_date
+                        td=tenders[0].f_startDate
                     tr
                         td Godzina rozpoczęcia zbierania ofert
-                        td=tenders[0].start_time
+                        td=tenders[0].startTime
                     tr
                         td Data zakończenia zbierania ofert
-                        td=tenders[0].f_end_date
+                        td=tenders[0].f_endDate
                     tr
                         td Godzina zakończenia zbierania ofert
-                        td=tenders[0].end_time
+                        td=tenders[0].endTime
                     tr
                         td Maksymalna koszt realizacji przetargu
-                        td=tenders[0].max_price + " zł"
+                        td=tenders[0].maxPrice + " zł"
                 if tenders[0].is_active
                     a(href=`${tenders[0].id}/send-offer`)
                         button Złóż ofertę
                 else
                     p
-                        b Składanie ofert będzie możliwe od #{tenders[0].f_start_date} od godziny #{tenders[0].start_time}
+                        b Składanie ofert będzie możliwe od #{tenders[0].f_startDate} od godziny #{tenders[0].startTime}
             footer Przetargi.pl 2025

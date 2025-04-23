@@ -1,6 +1,6 @@
 class TenderController {
     static getTenders(db) {
-        const sql = "SELECT *, DATE_FORMAT(start_date, '%d.%m.%Y') AS f_start_date, DATE_FORMAT(end_date, '%d.%m.%Y') AS f_end_date FROM tenders WHERE CONCAT(end_date, ' ', end_time) > NOW() ORDER BY start_date, start_time, end_date, end_time";
+        const sql = "SELECT *, DATE_FORMAT(startDate, '%d.%m.%Y') AS f_startDate, DATE_FORMAT(endDate, '%d.%m.%Y') AS f_endDate FROM tenders WHERE CONCAT(endDate, ' ', endTime) > NOW() ORDER BY startDate, startTime, endDate, endTime";
         return new Promise((resolve, reject) => {
             db.query(sql, (err, data) => {
                 if (err) return reject(err);
@@ -10,7 +10,7 @@ class TenderController {
     }
 
     static getCancelledTenders(db) {
-        const sql = "SELECT *, DATE_FORMAT(start_date, '%d.%m.%Y') AS f_start_date, DATE_FORMAT(end_date, '%d.%m.%Y') AS f_end_date FROM tenders WHERE CONCAT(end_date, ' ', end_time) <= NOW() ORDER BY start_date, start_time, end_date, end_time";
+        const sql = "SELECT *, DATE_FORMAT(startDate, '%d.%m.%Y') AS f_startDate, DATE_FORMAT(endDate, '%d.%m.%Y') AS f_endDate FROM tenders WHERE CONCAT(endDate, ' ', endTime) <= NOW() ORDER BY startDate, startTime, endDate, endTime";
         return new Promise((resolve, reject) => {
             db.query(sql, (err, data) => {
                 if (err) return reject(err);
@@ -20,7 +20,7 @@ class TenderController {
     }
 
     static getTenderById(db, selected_id) {
-        const sql = "SELECT *, DATE_FORMAT(start_date, '%d.%m.%Y') AS f_start_date, DATE_FORMAT(end_date, '%d.%m.%Y') AS f_end_date, CONCAT(start_date, ' ', start_time) <= NOW() AND CONCAT(end_date, ' ', end_time) > NOW()AS is_active FROM tenders WHERE id = " + selected_id;
+        const sql = "SELECT *, DATE_FORMAT(startDate, '%d.%m.%Y') AS f_startDate, DATE_FORMAT(endDate, '%d.%m.%Y') AS f_endDate, CONCAT(startDate, ' ', startTime) <= NOW() AND CONCAT(endDate, ' ', endTime) > NOW()AS is_active FROM tenders WHERE id = " + selected_id;
         return new Promise((resolve, reject) => {
             db.query(sql, (err, data) => {
                 if (err) return reject(err);
@@ -36,7 +36,10 @@ class TenderController {
         else if (tender.price < 0){
             return -2;
         }
-        let sql = `INSERT INTO tenders (subject_name, institution, description, start_date, start_time, end_date, end_time, max_price, submission_datetime) VALUES ("${tender.name}", "${tender.institution}", "${tender.desrc}", "${tender.startDate}", "${tender.startTime}", "${tender.endData}", "${tender.endTime}", ${tender.price}, NOW())`;
+        else if (false){
+            
+        }
+        let sql = `INSERT INTO tenders (subjectName, institution, description, startDate, startTime, endDate, endTime, maxPrice, submissionDatetime) VALUES ("${tender.name}", "${tender.institution}", "${tender.desrc}", "${tender.startDate}", "${tender.startTime}", "${tender.endData}", "${tender.endTime}", ${tender.price}, NOW())`;
         console.log(sql);
         return new Promise((resolve, reject) => {
             db.query(sql, (err, tender) => {
