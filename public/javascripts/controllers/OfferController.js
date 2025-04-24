@@ -15,7 +15,6 @@ class OfferController {
         else if (offer.price < 0){
             return -2;
         }
-
         let sql = `INSERT INTO offers (tenderId, bidderName, value, submissionDatetime) VALUES (${offer.tenderId}, "${offer.bidderName}", ${offer.price}, NOW())`;
         return new Promise((resolve, reject) => {
             db.query(sql, (err, tender) => {

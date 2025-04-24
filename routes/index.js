@@ -107,6 +107,8 @@ router.post("/add-tender/execute", function (req, res, next){
     res.render("notification", { notification : "Błąd - puste pola formularza podczas dodawania przetargu!!!"});
   else if (insertingResult === -2)
     res.render("notification", { notification : "Błąd - maksymalny koszt nie może być ujemny!!!"});
+  else if (insertingResult === -3)
+    res.render("notification", {notification : "Błąd - data i czas zakończenia przyjmowania ofert musi być późniejsza od momentu rozpoczęcia przyjmowania ofert!!!"});
   else
     res.render("notification", { notification : "Pomyślnie dodano przetarg"});
 });

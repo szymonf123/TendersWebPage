@@ -36,8 +36,8 @@ class TenderController {
         else if (tender.price < 0){
             return -2;
         }
-        else if (false){
-            
+        else if (tender.startDate + tender.startTime >= tender.endData + tender.endTime){
+            return -3;
         }
         let sql = `INSERT INTO tenders (subjectName, institution, description, startDate, startTime, endDate, endTime, maxPrice, submissionDatetime) VALUES ("${tender.name}", "${tender.institution}", "${tender.desrc}", "${tender.startDate}", "${tender.startTime}", "${tender.endData}", "${tender.endTime}", ${tender.price}, NOW())`;
         console.log(sql);
