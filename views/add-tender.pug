@@ -21,15 +21,15 @@ block content
                 h2 Dodaj przetarg
                 form(method="POST", class="insert", action="/add-tender/execute")
                     div(class="category")
-                        div(class="description") Nazwa przedmiotu przetargu:
+                        div(class="description") Nazwa przedmiotu przetargu (100 znaków):
                         div(class="field")
                             input(type="text", name="name")
                     div(class="category")
-                        div(class="description") Instytucja zamawiająca:
+                        div(class="description") Instytucja zamawiająca (100 znaków):
                         div(class="field")
                             input(type="text", name="institution")
                     div(class="category")
-                        div(class="description") Opis przedmiotu przetargu:
+                        div(class="description") Opis przedmiotu przetargu (500 znaków):
                         div(class="field")
                             textarea(name="descr")
                     div(class="category")
