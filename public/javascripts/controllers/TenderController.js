@@ -40,7 +40,6 @@ class TenderController {
             return -3;
         }
         let sql = `INSERT INTO tenders (subjectName, institution, description, startDate, startTime, endDate, endTime, maxPrice, submissionDatetime) VALUES ("${tender.name}", "${tender.institution}", "${tender.desrc}", "${tender.startDate}", "${tender.startTime}", "${tender.endData}", "${tender.endTime}", ${tender.price}, NOW())`;
-        console.log(sql);
         return new Promise((resolve, reject) => {
             db.query(sql, (err, tender) => {
                 if (err) return reject(err);
